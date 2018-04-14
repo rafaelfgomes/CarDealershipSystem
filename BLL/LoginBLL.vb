@@ -5,7 +5,7 @@ Public Class LoginBLL
 
     Dim dal As LoginDAL = New LoginDAL
 
-    Public Function login(ByVal dto As LoginDTO) As Boolean
+    Public Function login(ByVal dto As LoginDTO) As String
 
         Return dal.login(dto)
 

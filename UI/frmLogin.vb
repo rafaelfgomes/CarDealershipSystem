@@ -11,9 +11,15 @@ Public Class frmLogin
         dto.UserName = txtUserName.Text
         dto.UserPassword = txtUserPassword.Text
 
-        If bll.login(dto) Then
+        Dim accessType As String = bll.login(dto)
 
-            MessageBox.Show("Login Ok", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If Not IsNothing(accessType) Then
+
+            If accessType.Contains("Administrador") Then
+
+                MessageBox.Show("Administrador", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            End If
 
         Else
 

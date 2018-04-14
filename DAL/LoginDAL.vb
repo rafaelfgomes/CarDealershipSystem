@@ -7,9 +7,9 @@ Public Class LoginDAL
     Dim cmd As SqlCommand = New SqlCommand
     Dim dr As SqlDataReader
 
-    Public Function login(ByVal dto As LoginDTO) As Boolean
+    Public Function login(ByVal dto As LoginDTO) As String
 
-        'Dim accesType As String
+        Dim accesType As String = Nothing
 
         Try
 
@@ -28,11 +28,17 @@ Public Class LoginDAL
 
             If dr.HasRows Then
 
-                Return True
+                While dr.Read
+
+                    accesType = dr("PROFILE_NAME").ToString()
+
+                End While
+
+                Return accesType
 
             Else
 
-                Return False
+                Return accesType
 
             End If
 
